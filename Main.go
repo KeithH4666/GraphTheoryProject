@@ -4,6 +4,23 @@ import(
 	"fmt"
 )
 
+type state struct{
+	symbol rune
+	edge1 *state
+	edge2 *state
+}
+
+type nfa struct{
+	initial *state
+	accept *state
+}
+
+func regtonfa(postfix string)string{
+
+
+
+}
+
 func intoPost(infix string)string{
 	specials := map[rune]int{'*': 10, '.': 9 ,'|':8}
 	postfix:=[]rune{}
@@ -48,5 +65,8 @@ func main(){
 
 	fmt.Println("Infix: a.b.c*")
 	fmt.Println("Profix: ", intoPost("a.b.c*"))
+	
+	fmt.Println("Profix: ab.c*")
+	fmt.Println("NFA: ", regtonfa("ab.c*"))
 
 }
