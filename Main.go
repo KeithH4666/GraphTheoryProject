@@ -15,10 +15,19 @@ type nfa struct{
 	accept *state
 }
 
-func regtonfa(postfix string)string{
-
-
-
+func regtonfa(postfix string)*nfa{
+	nfastack := []*nfa{}
+	
+	for_, r := postfix{
+		switch r{
+			case ".":
+			case "|":
+			case "*":
+			default:
+		}
+	}
+	
+	return nfastack[0]
 }
 
 func intoPost(infix string)string{
