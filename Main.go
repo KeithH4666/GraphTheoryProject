@@ -15,15 +15,47 @@ type nfa struct{
 	accept *state
 }
 
-func regtonfa(postfix string)*nfa{
+func regtonfa(postfix string)*nfa {
 	nfastack := []*nfa{}
 	
-	for_, r := postfix{
-		switch r{
-			case ".":
-			case "|":
-			case "*":
-			default:
+	for _, r := range postfix {
+		switch r {
+		case '.':
+			frag2:=nfastack[len(nfastack)-1]
+			nfastack = nfastack[:len(nfastack)-1]
+			frag1:=nfastack[len(nfastack)-1]
+			nfastack = nfastack[:len(nfastack)-1]
+				
+			frag1.accept.edge1 = frag2.initial
+				
+			nfastack = append(nfastack, &nfa{initial:frag1.initial, accept: frag2.accept})
+		case '|':
+			frag2:=nfastack[len(nfastack)-1]
+			nfastack = nfastack[:len(nfastack)-1]
+			frag1:=nfastack[len(nfastack)-1]
+			nfastack = nfastack[:len(nfastack)-1]
+				
+			accept := state{}
+			initial := state{edge1: frag1.initial,edge2:frag2.initial}
+			frag1.accept.edge1 = &accept
+			frag2.accept.edge1 = &accept
+				
+			nfastack = append(nfastack, &nfa{initial:&initial, accept: &accept})
+		case '*':
+			frag:=nfastack[len(nfastack)-1]
+			nfastack = nfastack[:len(nfastack)-1]
+				
+			accept:= state{}
+			initial:= state{edge1: frag.initial, edge2: &accept}
+			frag.accept.edge1 = frag.initial
+			frag.accept.edge2 = &accept
+				
+			nfastack = append(nfastack, &nfa{initial:&initial, accept: &accept})
+		default:
+			accept := state{}
+			initial := state{symbol: r,edge1: &accept}
+				
+			nfastack = append(nfastack, &nfa{initial:&initial,accept:&accept})
 		}
 	}
 	
@@ -76,6 +108,6 @@ func main(){
 	fmt.Println("Profix: ", intoPost("a.b.c*"))
 	
 	fmt.Println("Profix: ab.c*")
-	fmt.Println("NFA: ", regtonfa("ab.c*"))
+	fmt.Println("NFA: ", regtonfa("ab.c*|"))
 
 }
