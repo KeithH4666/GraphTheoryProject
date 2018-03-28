@@ -155,5 +155,8 @@ func main(){
 	
 	fmt.Println("Profix: ab.c*")
 	fmt.Println("NFA: ", regtonfa("ab.c*|"))
+	
+	fmt.Println("Regex match")
+	fmt.Println("ab.c*|","abc")
 
 }
