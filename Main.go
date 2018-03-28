@@ -107,6 +107,16 @@ func pomatch(po string, s string) bool{
 	ismatch := false
 	ponfa := regtonfa(po)
 	
+	current := []*state{}
+	next := []*state{}
+	
+	for  _, r := range s {
+		for _, c := range current{
+		
+		}
+		current, next = next, []*state{}
+	}
+	
 	return ismatch
 
 }
