@@ -102,6 +102,12 @@ func intoPost(infix string)string{
 
 }
 
+func pomatch(po string, s string) bool{
+
+
+
+}
+
 func main(){
 
 	fmt.Println("Infix: a.b.c*")
