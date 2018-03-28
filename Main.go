@@ -110,11 +110,24 @@ func pomatch(po string, s string) bool{
 	current := []*state{}
 	next := []*state{}
 	
+	
+	
 	for  _, r := range s {
 		for _, c := range current{
-		
+			if c.symbol == r{
+				
+			}
 		}
 		current, next = next, []*state{}
+		
+		
+	}
+	
+	for _, c := range current{
+		if c == ponfa.accept{
+			ismatch = true
+			break
+		}
 	}
 	
 	return ismatch
