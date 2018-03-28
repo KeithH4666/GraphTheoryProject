@@ -104,7 +104,10 @@ func intoPost(infix string)string{
 
 func pomatch(po string, s string) bool{
 
-
+	ismatch := false
+	ponfa := regtonfa(po)
+	
+	return ismatch
 
 }
 
