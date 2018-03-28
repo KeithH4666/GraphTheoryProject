@@ -157,6 +157,6 @@ func main(){
 	fmt.Println("NFA: ", regtonfa("ab.c*|"))
 	
 	fmt.Println("Regex match")
-	fmt.Println("ab.c*|","abc")
+	fmt.Println(pomatch("ab.c*|","abc"))
 
 }
