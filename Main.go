@@ -102,6 +102,11 @@ func intoPost(infix string)string{
 
 }
 
+func addState(l []*state,s *state, a *state)[]*state{
+
+
+}
+
 func pomatch(po string, s string) bool{
 
 	ismatch := false
@@ -110,12 +115,12 @@ func pomatch(po string, s string) bool{
 	current := []*state{}
 	next := []*state{}
 	
-	
+	current = addState(current[:],ponfa.initial,ponfa.accept)
 	
 	for  _, r := range s {
 		for _, c := range current{
 			if c.symbol == r{
-				
+				next = addState(next[:],s.edge1,ponfa.accept)
 			}
 		}
 		current, next = next, []*state{}
