@@ -150,13 +150,20 @@ func pomatch(po string, s string) bool{
 
 func main(){
 
-	fmt.Println("Infix: a.b.c*")
-	fmt.Println("Profix: ", intoPost("a.b.c*"))
+	var userInputReg string 
+	var userInputString string 
+	var postReg string 
+	//var nfa string
 	
-	fmt.Println("Profix: ab.c*")
-	fmt.Println("NFA: ", regtonfa("ab.c*|"))
+	//Infix "a.b.c*"
+	fmt.Println("Please enter regular expresion:")
+	fmt.Scanln(&userInputReg)
+	postReg = intoPost(userInputReg)
+	fmt.Println("Converting into PostFix: Which is: ", postReg)
 	
-	fmt.Println("Regex match")
-	fmt.Println(pomatch("ab.c*|","abc"))
+	//Regex Match
+	fmt.Println("Regex match - Please enter string you want to test against regex:")
+	fmt.Scanln(&userInputString)
+	fmt.Println(pomatch(postReg,userInputString))
 
 }
