@@ -120,6 +120,7 @@ func intoPost(infix string)string{
 
 }
 
+//Function for states
 func addState(l []*state,s *state, a *state)[]*state{
 	l  = append(l,s)
 	
